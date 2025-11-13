@@ -1,81 +1,222 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi página personal</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diego Pinto | Estudiante de Administración de Negocios</title>
+  <meta name="description" content="Página personal de Diego Pinto, estudiante de Administración de Negocios en la Universidad Católica San Pablo. Apasionado por los deportes, el análisis financiero y la gestión empresarial.">
   <style>
-    :root {
-      --color1: #00ADB5;
-      --color2: #393E46;
-      --color3: #EEEEEE;
-      --color4: #222831;
-      --shadow: 0 2px 10px rgba(0,0,0,0.2);
+    :root{
+      --accent: #6c63ff;
+      --accent-2: #764ba2;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f6f7fb;
+      --glass: rgba(255,255,255,0.75);
+      --radius:14px;
+      --shadow: 0 6px 18px rgba(32,35,41,0.08);
+      --maxw:1100px;
     }
-
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      background: linear-gradient(180deg, #eef2ff 0%, #f6f7fb 100%);
+      color:#111827;
+      line-height:1.5;
     }
+    .container{max-width:var(--maxw);margin:0 auto;padding:24px}
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--color3);
-      color: var(--color4);
+    /* Header */
+    header{backdrop-filter: blur(6px);position:sticky;top:12px;margin:12px 0;z-index:50}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      padding:12px;
+      border-radius:12px;
+      color:white;
+      box-shadow:var(--shadow)
     }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .brand h1{font-size:1rem;margin:0}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;margin-left:8px}
+    nav a:hover{text-decoration:underline}
 
-    header {
-      background-color: var(--color1);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    footer {
-      background-color: var(--color2);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-
-    /* 🔹 Foto de perfil */
+    /* Foto de perfil */
     .foto-perfil {
       width: 46px;
       height: 46px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid white;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      box-shadow: 0 0 6px rgba(0,0,0,0.15);
     }
 
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:44px 12px;margin-top:12px}
+    .card-hero{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));padding:28px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero h2{margin:0;font-size:2rem}
+    .hero p{color:var(--muted);margin-top:10px}
+    .actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:2px solid rgba(17,24,39,0.06);color:var(--muted)}
+
+    /* Sections */
+    section{margin-top:28px}
+    h3{margin:0 0 14px 0}
+    .about{display:grid;grid-template-columns:1fr;gap:18px}
+    .bio{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Projects grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+    .project:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(32,35,41,0.12)}
+    .project h4{margin:0 0 8px 0}
+    .muted{color:var(--muted)}
+
+    /* Contact list */
+    .contacts{display:flex;flex-direction:column;gap:10px}
+    .contact-link{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbff);box-shadow:var(--shadow);text-decoration:none;color:inherit}
+    .contact-link svg{width:28px;height:28px;border-radius:8px;flex-shrink:0}
+    footer{margin:36px 0 12px;text-align:center;color:var(--muted);font-size:0.95rem}
+
+    /* Responsive layout */
+    @media(min-width:900px){
+      .hero{grid-template-columns:1fr 420px}
+      .about{grid-template-columns:1fr 360px}
+    }
+
+    /* Small helpers */
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(108,99,255,0.12);color:var(--accent);font-weight:600}
+    .socials{display:flex;gap:8px}
   </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <img src="https://avatars.githubusercontent.com/u/242884466?v=4" alt="Foto de Diego Pinto" class="foto-perfil">
+          <div>
+            <h1>Mi página personal</h1>
+            <div style="font-size:0.86rem;opacity:0.95">Diego Pinto — Administración de Negocios</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#inicio">Inicio</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+          <a href="https://www.linkedin.com/in/diego-pinto-47453b398" target="_blank">LinkedIn</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero / Inicio -->
+    <section id="inicio" class="hero">
+      <div class="card-hero">
+        <h2>¡Hola! Soy Diego Pinto</h2>
+        <p class="muted">Estudiante de Administración de Negocios en la Universidad Católica San Pablo. Amante de los deportes y actividades en el exterior.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contacto">Contáctame</a>
+          <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+          <span class="chip">Universidad Católica San Pablo</span>
+        </div>
+        <div style="margin-top:18px;color:var(--muted);font-size:0.95rem">
+          <strong>Email:</strong>
+          <a href="mailto:diego.pinto.quenaya@ucsp.edu.pe">diego.pinto.quenaya@ucsp.edu.pe</a>
+        </div>
+      </div>
+      <aside style="display:flex;align-items:center;justify-content:center">
+        <div style="width:100%;max-width:420px;border-radius:12px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.98));box-shadow:var(--shadow)">
+          <h3 style="margin-top:0">Datos rápidos</h3>
+          <p class="muted">Carrera: Administración de Negocios<br>Universidad: Universidad Católica San Pablo<br>Intereses: Deportes, actividades en el exterior, gestión y emprendimiento</p>
+          <div style="margin-top:12px" class="socials">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/diego-pinto-47453b398" target="_blank">Mi LinkedIn</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi">
+      <div class="about">
+        <div class="bio">
+          <h3>Sobre mí</h3>
+          <p>Soy estudiante de Administración de Negocios en la Universidad Católica San Pablo. Me apasionan los deportes y las actividades al aire libre; disfruto trabajar en equipo y aprender sobre gestión, estrategia y emprendimiento. Busco oportunidades para aplicar mis conocimientos y seguir desarrollándome profesionalmente.</p>
+          <h4 style="margin-top:12px">Habilidades</h4>
+          <p class="muted">Comunicación, trabajo en equipo, pensamiento analítico, planificación y liderazgo en actividades deportivas.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="bio">
+            <h4>Educación</h4>
+            <p class="muted"><strong>Universidad Católica San Pablo</strong><br>Estudiante de Administración de Negocios.</p>
+          </div>
+          <div class="bio">
+            <h4>Intereses</h4>
+            <p class="muted">Deportes (fútbol, ciclismo, trekking), actividades en exterior, networking profesional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos">
+      <h3>Proyectos</h3>
+      <div class="grid">
+        <article class="project">
+          <h4>📄 Página personal (este sitio)</h4>
+          <p class="muted">Página de presentación y portafolio personal, publicada con GitHub Pages.</p>
+          <p style="margin-top:12px"><a class="btn btn-primary" href="#inicio">Ver página</a></p>
+        </article>
+        <article class="project">
+          <h4>📚 Proyecto universitario</h4>
+          <p class="muted">Trabajo académico sobre gestión y administración — resultados y presentación pública.</p>
+          <p style="margin-top:12px"><a class="btn btn-ghost" href="#contacto">Solicitar info</a></p>
+        </article>
+        <article class="project">
+          <h4>⚽ Actividades deportivas</h4>
+          <p class="muted">Organización y coordinación de eventos deportivos en la universidad y actividades al aire libre.</p>
+          <p style="margin-top:12px"><a class="btn btn-ghost" href="#contacto">Contactar</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <h3>Contacto</h3>
+      <p class="muted">Puedes escribirme por correo o visitar mi perfil de LinkedIn. También comparto algunos contactos de referencia:</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px">
+        <a class="contact-link" href="mailto:diego.pinto.quenaya@ucsp.edu.pe">
+          📧 diego.pinto.quenaya@ucsp.edu.pe
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/diego-pinto-47453b398" target="_blank">
+          🔗 Mi LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Diego Pinto — Universidad Católica San Pablo · Hecho con HTML & CSS · Publicado en GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      })
+    });
+  </script>
+</body>
+</html>
+
